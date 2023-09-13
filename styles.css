@@ -44,7 +44,7 @@ html {
 .header {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 70%;
     max-width: 70rem;
     text-transform: uppercase;
     border-radius: 15px;
@@ -81,9 +81,8 @@ html {
     font-weight: bold;
 }
 .choices-icons {
-    margin-top: 10rem;
-    position: relative;
-    
+    margin-top: 8rem;
+    position: relative;    
 }
 .rock {   
     background-color: #FFF;
