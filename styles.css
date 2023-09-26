@@ -19,7 +19,11 @@
     --dark-blue: hsl(231, 94%, 42%);
     --dark-gray: hsl(229, 25%, 31%);
     --dark-red:  hsl(349, 71%, 52%);
-    --dark-yellow: hsl(39, 89%, 49%);   
+    --dark-yellow: hsl(39, 89%, 49%); 
+    --light-purple: hsl(261, 72%, 63%);
+    --dark-purple: hsl(261, 73%, 60%);
+    --light-cyan: hsl(189, 58%, 57%);
+    --dark-cyan: hsl(189, 59%, 53%);
 }
 
 body {
@@ -28,7 +32,7 @@ body {
 
 html {
     background-color: var(--dark-navy);
-    background-image: radial-gradient(var(--light-navy), var( --dark-navy));    
+    background-image: radial-gradient(var(--light-navy), var(--dark-navy));    
 }
 
 .gameboard {
@@ -82,7 +86,8 @@ html {
 }
 .choices-icons {
     margin-top: 6rem;
-    position: relative;    
+    position: relative;
+    
 }
 .rock {   
     background-color: #FFF;
@@ -98,8 +103,8 @@ html {
 .r1 {
     padding: 3.5em;
     position: absolute;
-    left: 25%;
-    top: 65%;
+    left: 50%;
+    top: 75%;
     z-index: 1
 
 }
@@ -117,8 +122,8 @@ html {
 .p1 {
     padding: 3.5em;
     position: absolute;
-    right: 70%;
-    top: -20%;
+    right: -25%;
+    top: 15%;
     z-index: 1
     
 }
@@ -135,9 +140,45 @@ html {
 }
 .s1 {
     position: absolute;
-    top: -20%; 
+    top: -25%; 
     padding: 3.5em;
-    left: 65%;
+    left: 30%;
+    z-index: 1;
+}
+.spock{
+    background-image: url(images/icon-spock.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #FFF;
+    border-radius: 50%;
+    padding: 4.5em;
+    border: 20px solid var(--light-cyan);
+    box-shadow: 0 6px 0 0 var(--dark-cyan), inset 0 6px 3px 0 var(--light-gray);
+    cursor: pointer;
+}
+.sp1{
+    position: absolute;
+    top: 10%; 
+    padding: 3.5em;
+    left: -25%;
+    z-index: 1;
+}
+.lizard{
+    background-image: url(images/icon-lizard.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #FFF;
+    border-radius: 50%;
+    padding: 4.5em;
+    border: 20px solid var(--light-purple);
+    box-shadow: 0 6px 0 0 var(--dark-purple), inset 0 6px 3px 0 var(--light-gray);
+    cursor: pointer;
+}
+.l1{
+    position: absolute;
+    top: 75%; 
+    padding: 3.5em;
+    left: -15%;
     z-index: 1;
 }
  .rule-text {
@@ -335,7 +376,7 @@ html {
     }
     .r1 {
         padding: 2.5em;
-        top: 55%;
+        top: 75%;
     }
     .paper {
         padding: 3.5em;
@@ -343,8 +384,8 @@ html {
     }
     .p1 {
         padding: 2.5em;
-        right: 63%;
-        top: -15%;
+        right: -20%;
+        top: 15%;
     }
     .scissors {
         padding: 3.5em;
@@ -352,15 +393,32 @@ html {
     }
     .s1 {
         padding: 2.5em;
-        left: 55%;
-        top: -15%;
+        left: 30%;
+        top: -25%
     }
-    .triangle img {
-        width: 217px;
-        height: 198px;
+    .spock {
+        padding: 3.5em;
+        border: 15px solid var(--light-cyan);
+    }
+    .sp1{
+        top: 10%;
+        padding: 2.5em;
+        left: -20%;
+    }
+    .lizard {
+        padding: 3.5em;
+        border: 15px solid var(--light-purple);
+    }
+    .l1{
+        top: 75%;
+        padding: 2.5em;
+        left: -15%;
+    }
+    .pentagon img {
+        width: 227px;
+        height: 227px;
         stroke-width: 15px;
         stroke: #000;
-        /* opacity: 0.2; */
     } 
     .choices-icons {
         margin-top: 5rem;

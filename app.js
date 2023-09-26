@@ -1,23 +1,22 @@
-"use strict";
-const scoreBoard = document.querySelector('.scoreboard');
-const scoreText = document.querySelector('.score-text');
-const scoreValue = document.querySelector('.score-value');
-const gameBoard = document.querySelector('.gameboard');
-const marks = document.querySelectorAll('.choices');
-const displayStatus = document.querySelector('.display-status');
-const winText = document.querySelector('.won');
-const lostText = document.querySelector('.lost');
-const drawText = document.querySelector('.draw');
-const nextRoundBtn = document.querySelector('.next-round');
-const rulesBtn = document.querySelector('.rule-text');
-const ruleLogo = document.querySelector('.rules');
-const closeMark = document.querySelector('#close');
-const userIcon = document.querySelector('.user-icon');
-const houseIcon = document.querySelector('.house-icon');
-const startPage = document.getElementById('start-page');
-let score = 0;
+var scoreBoard = document.querySelector('.scoreboard');
+var scoreText = document.querySelector('.score-text');
+var scoreValue = document.querySelector('.score-value');
+var gameBoard = document.querySelector('.gameboard');
+var marks = document.querySelectorAll('.choices');
+var displayStatus = document.querySelector('.display-status');
+var winText = document.querySelector('.won');
+var lostText = document.querySelector('.lost');
+var drawText = document.querySelector('.draw');
+var nextRoundBtn = document.querySelector('.next-round');
+var rulesBtn = document.querySelector('.rule-text');
+var ruleLogo = document.querySelector('.rules');
+var closeMark = document.querySelector('#close');
+var userIcon = document.querySelector('.user-icon');
+var houseIcon = document.querySelector('.house-icon');
+var startPage = document.getElementById('start-page');
+var score = 0;
 if (nextRoundBtn) {
-    nextRoundBtn.addEventListener('click', () => {
+    nextRoundBtn.addEventListener('click', function () {
         if (startPage) {
             startPage.style.display = "block";
         }
@@ -27,21 +26,21 @@ if (nextRoundBtn) {
     });
 }
 if (rulesBtn && ruleLogo) {
-    rulesBtn.addEventListener('click', () => {
+    rulesBtn.addEventListener('click', function () {
         if (ruleLogo) {
             ruleLogo.style.display = 'block';
         }
     });
 }
 if (closeMark) {
-    closeMark.addEventListener('click', () => {
+    closeMark.addEventListener('click', function () {
         if (ruleLogo) {
             ruleLogo.style.display = 'none';
         }
     });
 }
 function getUserChoice(button) {
-    const classNames = button.className.split(' ');
+    var classNames = button.className.split(' ');
     return classNames[0];
 }
 function handleClick(event) {
@@ -49,10 +48,10 @@ function handleClick(event) {
         nextRoundBtn.style.display = 'none';
     }
     if (userIcon) {
-        userIcon.classList.remove('rock', 'paper', 'scissors');
+        userIcon.classList.remove('rock', 'paper', 'scissors', 'spock', 'lizard');
     }
     if (houseIcon) {
-        houseIcon.classList.remove('rock', 'paper', 'scissors');
+        houseIcon.classList.remove('rock', 'paper', 'scissors', 'spock', 'lizard');
     }
     if (lostText) {
         lostText.style.display = 'none';
@@ -63,11 +62,11 @@ function handleClick(event) {
     if (drawText) {
         drawText.style.display = 'none';
     }
-    const button = event.target;
-    const userChoice = getUserChoice(button);
-    const allChoices = ['rock', 'paper', 'scissors'];
-    const housePlayerIndex = Math.floor(Math.random() * 3);
-    const computerChoice = allChoices[housePlayerIndex];
+    var button = event.target;
+    var userChoice = getUserChoice(button);
+    var allChoices = ['rock', 'paper', 'scissors'];
+    var housePlayerIndex = Math.floor(Math.random() * 3);
+    var computerChoice = allChoices[housePlayerIndex];
     if (startPage) {
         startPage.style.display = "none";
     }
@@ -75,24 +74,24 @@ function handleClick(event) {
         gameBoard.style.display = "block";
     }
     if (userIcon) {
-        userIcon.classList.add(userChoice);
+        userIcon.classList.toggle(userChoice);
     }
-    setTimeout(() => {
+    setTimeout(function () {
         if (houseIcon) {
-            houseIcon.classList.add(computerChoice);
+            houseIcon.classList.toggle(computerChoice);
         }
     }, 1000);
     playRound(userChoice, computerChoice);
 }
 ;
-marks.forEach((mark) => {
+marks.forEach(function (mark) {
     if (mark instanceof HTMLElement) {
         mark.addEventListener('click', handleClick);
     }
 });
 function playRound(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
-        setTimeout(() => {
+        setTimeout(function () {
             if (drawText) {
                 drawText.style.display = "block";
             }
@@ -100,10 +99,12 @@ function playRound(userChoice, computerChoice) {
                 nextRoundBtn.style.display = "block";
         }, 1300);
     }
-    else if ((userChoice === 'rock' && computerChoice === 'scissors') ||
-        (userChoice === 'paper' && computerChoice === 'rock') ||
-        (userChoice === 'scissors' && computerChoice === 'paper')) {
-        setTimeout(() => {
+    else if ((userChoice === 'rock' && (computerChoice === 'scissors' || computerChoice === 'lizard')) ||
+        (userChoice === 'paper' && (computerChoice === 'rock' || computerChoice === 'spock')) ||
+        (userChoice === 'scissors' && (computerChoice === 'paper' || computerChoice === 'lizard')) ||
+        (userChoice === 'spock' && (computerChoice === 'rock' || computerChoice === 'scissors')) ||
+        (userChoice === 'lizard' && (computerChoice === 'spock' || computerChoice === 'paper'))) {
+        setTimeout(function () {
             if (winText) {
                 winText.style.display = "block";
             }
@@ -115,7 +116,7 @@ function playRound(userChoice, computerChoice) {
         }, 1300);
     }
     else {
-        setTimeout(() => {
+        setTimeout(function () {
             if (lostText) {
                 lostText.style.display = "block";
             }

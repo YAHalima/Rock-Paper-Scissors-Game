@@ -56,10 +56,10 @@ function handleClick (event: Event): void {
         nextRoundBtn.style.display = 'none';
     }
     if (userIcon) {
-        userIcon.classList.remove('rock', 'paper', 'scissors');
+        userIcon.classList.remove('rock', 'paper', 'scissors','spock', 'lizard');
     }
     if (houseIcon) {
-        houseIcon.classList.remove('rock', 'paper', 'scissors');
+        houseIcon.classList.remove('rock', 'paper', 'scissors', 'spock', 'lizard');
     }
     if (lostText) {
         lostText.style.display = 'none';
@@ -90,12 +90,12 @@ function handleClick (event: Event): void {
     }
 
     if (userIcon) {
-        userIcon.classList.add(userChoice);
+        userIcon.classList.toggle(userChoice);
     }
    
     setTimeout(() => {
     if (houseIcon) {
-        houseIcon.classList.add(computerChoice);
+        houseIcon.classList.toggle(computerChoice);
     }
   }, 1000);
 
@@ -116,21 +116,23 @@ function playRound(userChoice: string, computerChoice: string) {
             drawText.style.display = "block";
         }
         if (nextRoundBtn)
-      nextRoundBtn.style.display = "block";
-    }, 1300);
+            nextRoundBtn.style.display = "block";
+        }, 1300);
        
     }
     else if 
-       ((userChoice === 'rock' && computerChoice === 'scissors') || 
-       (userChoice === 'paper' && computerChoice === 'rock') || 
-       (userChoice === 'scissors' && computerChoice === 'paper')) {
+       ((userChoice === 'rock' && (computerChoice === 'scissors' || computerChoice === 'lizard')) || 
+       (userChoice === 'paper' && (computerChoice === 'rock' || computerChoice === 'spock')) || 
+       (userChoice === 'scissors' && (computerChoice === 'paper' || computerChoice === 'lizard')) ||
+       (userChoice === 'spock' && (computerChoice === 'rock' || computerChoice === 'scissors')) ||
+       (userChoice === 'lizard' && (computerChoice === 'spock' || computerChoice === 'paper')) ) {
 
        setTimeout(() => {
         if (winText) {
             winText.style.display = "block";
         }
         if (nextRoundBtn)
-      nextRoundBtn.style.display = "block";
+           nextRoundBtn.style.display = "block";
 
         if (scoreValue) {
             scoreValue.innerHTML = '' + ++score;
