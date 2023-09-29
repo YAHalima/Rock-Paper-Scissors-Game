@@ -428,13 +428,17 @@ html {
         height: 35px;
         right: 7em;
         border-radius: 0.25em;
+        position: absolute;
+        left: 50%;
+        translate: -50%;
     }
     .pick-choice {
-        position: fixed;
+        position: absolute;
         margin-top: 14rem;
-        gap: 2.5em;
-        left: 0.5em;
-    
+        gap: 0.5em;
+        left: 50%;
+        translate: -50%;
+        width: 100%;
     }
     .display-status {
         width: 65%;
