@@ -18,7 +18,7 @@ let score = 0;
 
 if (nextRoundBtn) {
     nextRoundBtn.addEventListener('click', () => {
-
+   
     if (startPage) {
       startPage.style.display = "block";
      
