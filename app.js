@@ -89,14 +89,66 @@ marks.forEach(function (mark) {
         mark.addEventListener('click', handleClick);
     }
 });
+// function playRound(userChoice: string, computerChoice: string) {
+//     if (userChoice === computerChoice) {
+//         setTimeout(() => {
+//         if (drawText) {
+//             drawText.style.display = "block";
+//         }
+//         if (nextRoundBtn)
+//             nextRoundBtn.style.display = "block";
+//         }, 1300);
+//     }
+//     else if 
+//        ((userChoice === 'rock' && (computerChoice === 'scissors' || computerChoice === 'lizard')) || 
+//        (userChoice === 'paper' && (computerChoice === 'rock' || computerChoice === 'spock')) || 
+//        (userChoice === 'scissors' && (computerChoice === 'paper' || computerChoice === 'lizard')) ||
+//        (userChoice === 'spock' && (computerChoice === 'rock' || computerChoice === 'scissors')) ||
+//        (userChoice === 'lizard' && (computerChoice === 'spock' || computerChoice === 'paper')) ) {
+//        setTimeout(() => {
+//         if (winText) {
+//             winText.style.display = "block";
+//         }
+//         if (nextRoundBtn)
+//            nextRoundBtn.style.display = "block";
+//         if (scoreValue) {
+//             scoreValue.innerHTML = '' + ++score;
+//         }
+//     }, 1300);
+//     } 
+//     else {
+//         setTimeout(() => {
+//         if (lostText) {
+//             lostText.style.display = "block";
+//         }
+//         if (nextRoundBtn) {
+//             nextRoundBtn.style.display = "block";
+//         }
+//        if (scoreValue) {
+//             score--;
+//             scoreValue.innerHTML = '' + score;
+//         }    
+//     }, 1300);
+//     }
+// };
+function initializeScoreDisplay() {
+    if (scoreValue) {
+        scoreValue.innerHTML = '' + score;
+    }
+}
+window.addEventListener('load', function () {
+    score = parseInt(localStorage.getItem('score') || '0');
+    initializeScoreDisplay();
+});
 function playRound(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
         setTimeout(function () {
             if (drawText) {
                 drawText.style.display = "block";
             }
-            if (nextRoundBtn)
+            if (nextRoundBtn) {
                 nextRoundBtn.style.display = "block";
+            }
         }, 1300);
     }
     else if ((userChoice === 'rock' && (computerChoice === 'scissors' || computerChoice === 'lizard')) ||
@@ -108,10 +160,13 @@ function playRound(userChoice, computerChoice) {
             if (winText) {
                 winText.style.display = "block";
             }
-            if (nextRoundBtn)
+            if (nextRoundBtn) {
                 nextRoundBtn.style.display = "block";
+            }
             if (scoreValue) {
-                scoreValue.innerHTML = '' + ++score;
+                score++;
+                scoreValue.innerHTML = '' + score;
+                localStorage.setItem('score', score.toString());
             }
         }, 1300);
     }
@@ -126,8 +181,16 @@ function playRound(userChoice, computerChoice) {
             if (scoreValue) {
                 score--;
                 scoreValue.innerHTML = '' + score;
+                localStorage.setItem('score', score.toString());
             }
         }, 1300);
     }
+    //     window.addEventListener('load', () => {
+    //     score = parseInt(localStorage.getItem('score')!);
+    //     if (scoreValue) {
+    //                 scoreValue.innerHTML = '' + score;
+    //     }
+    // })
+    initializeScoreDisplay();
 }
 ;
