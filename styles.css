@@ -321,9 +321,9 @@ html {
     font-weight: 600;
     text-transform: uppercase;
 }
-/* #play-btn:hover {
+#play-btn:hover {
     color: var(--dark-red);
-} */
+}
 .next-round:hover {
     cursor: pointer;
     color: var(--dark-red); 
